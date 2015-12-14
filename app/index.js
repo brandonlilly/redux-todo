@@ -16,11 +16,6 @@ const logger = createLogger({
   predicate: () => true,
 });
 
-const finalCreateStore = compose(
-  applyMiddleware(thunk),
-  applyMiddleware(logger),
-)(createStore);
-
 const store = applyMiddleware(thunk, promise, logger)(createStore)(reducer);
 
 store.dispatch(addTodo('go shopping'));
